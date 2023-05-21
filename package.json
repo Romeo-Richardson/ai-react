@@ -6,9 +6,11 @@
         "heroku-postbuild": "npm run install-client && npm run build"
     },
     "dependencies": {
+        "cors": "^2.8.5",
         "dotenv": "^16.0.3",
         "express": "^4.18.2",
         "mongoose": "^7.2.0",
+        "node-gtts": "^2.0.2",
         "path": "^0.12.7"
     }
 }

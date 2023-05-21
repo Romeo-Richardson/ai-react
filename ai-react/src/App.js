@@ -5,7 +5,6 @@ import SpeechRecognition, {
 import { useState, useEffect, useRef } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
-import openAI from "./helper"
 
 const Dictaphone = () => {
   const [response, setResponse] = useState("");
@@ -143,7 +142,7 @@ const Dictaphone = () => {
       headers: {
         "Content-Type": "application/json",
         Authorization:
-          openAI,
+          process.env.REACT_APP_OPEN_AI,
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",

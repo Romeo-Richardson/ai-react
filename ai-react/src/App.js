@@ -14,7 +14,7 @@ const Dictaphone = () => {
   const [voiceStatus, setVoiceStatus] = useState(true);
 
   const { data: users, isFetched } = useQuery(["Users"], async () => {
-    const request = await fetch("http://localhost:3001/getHistory");
+    const request = await fetch(process.env.REACT_APP_EP1);
     const response = await request.json();
     return response;
   });
@@ -57,7 +57,7 @@ const Dictaphone = () => {
     console.log(userCheck);
     if (!userCheck) {
       try {
-        await fetch("http://localhost:3001/postUser", {
+        await fetch(process.env.REACT_APP_EP2, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -123,7 +123,7 @@ const Dictaphone = () => {
           date: `${d.getMonth()}/${d.getDay()}/${d.getFullYear()}`,
         },
       ];
-      await fetch("http://localhost:3001/postHistory", {
+      await fetch(process.env.REACT_APP_EP3, {
         method: "PUT",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -165,7 +165,7 @@ const Dictaphone = () => {
         ? data.choices[0].message.content
         : "No response from God.";
     setResponse(responseText);
-    let audio = new Audio(`http://localhost:3001/speech?text=${responseText}`);
+    let audio = new Audio(`https://ai-foundation-react.herokuapp.com/speech?text=${responseText}`);
     if (voiceStatus) {
       audio.play();
     }

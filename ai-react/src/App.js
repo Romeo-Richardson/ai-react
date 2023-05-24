@@ -33,7 +33,7 @@ const Dictaphone = () => {
 
   const inputRef = useRef();
 
-   let {
+  let {
     transcript,
     listening,
     resetTranscript,
@@ -41,10 +41,10 @@ const Dictaphone = () => {
   } = useSpeechRecognition();
 
   useEffect(() => {
-    if(!voice){
-      setVoice(transcript)
+    if (!voice) {
+      setVoice(transcript);
     }
-  }, [listening])
+  }, [listening]);
 
   if (!browserSupportsSpeechRecognition) {
     return <span>Browser doesn't support speech recognition.</span>;
@@ -84,8 +84,8 @@ const Dictaphone = () => {
         alert("logging in");
         sessionStorage.setItem("UserID", findUser[0]._id);
         navigate("/");
-        setPassword(null)
-        setUsername(null)
+        setPassword(null);
+        setUsername(null);
       } else {
         alert("invalid password");
       }
@@ -141,8 +141,7 @@ const Dictaphone = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization:
-          process.env.REACT_APP_OPEN_AI,
+        Authorization: process.env.REACT_APP_OPEN_AI,
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
@@ -165,7 +164,9 @@ const Dictaphone = () => {
         ? data.choices[0].message.content
         : "No response from God.";
     setResponse(responseText);
-    let audio = new Audio(`https://ai-foundation-react.herokuapp.com/speech?text=${responseText}`);
+    let audio = new Audio(
+      `https://ai-foundation-react.herokuapp.com/speech?text=${responseText}`
+    );
     if (voiceStatus) {
       audio.play();
     }
@@ -259,7 +260,7 @@ const Dictaphone = () => {
                     if (voice) {
                       setVoice(null);
                       SpeechRecognition.startListening();
-                    } 
+                    }
                   }}
                 >
                   Record

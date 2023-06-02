@@ -141,7 +141,7 @@ const Dictaphone = () => {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        Authorization: `Bearer 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`,
+        Authorization: `Bearer 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`,
       },
       body: JSON.stringify({
         model: "gpt-3.5-turbo",
